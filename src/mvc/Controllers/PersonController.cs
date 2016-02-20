@@ -3,7 +3,6 @@ using Microsoft.AspNet.Mvc;
 
 namespace Controllers
 {
-    [Route("/person")]
     public class PersonController : Controller
     {
         private static List<string> people = new List<string> { "Han", "Leia", "Luke" }; 
@@ -13,7 +12,6 @@ namespace Controllers
             return people;
         }
         
-        [HttpPut]
         public IActionResult Put([FromBody] string person) 
         {
             if (person == null) {

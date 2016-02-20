@@ -1,5 +1,6 @@
 using Microsoft.AspNet.Builder;
 using Microsoft.Extensions.DependencyInjection;
+using Middleware;
 
 namespace Mvc
 {
@@ -12,11 +13,12 @@ namespace Mvc
         
         public void Configure(IApplicationBuilder app)
         {
+            app.UseMiddleware<AddMethodToRequestPathMiddleware>();
+            
             app.UseMvc(routes =>
             {
-                routes.MapRoute("default", "{controller=Root}/{action=Get}");
+                routes.MapRoute("default", "{controller=Root}/{action}");
             });
         }
     }
-    
 }

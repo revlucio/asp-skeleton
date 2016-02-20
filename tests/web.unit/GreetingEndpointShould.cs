@@ -18,6 +18,5 @@ namespace Web.Unit
             
             Assert.Equal("Hello, world!", responseString);
         }
-        
     }
 }
