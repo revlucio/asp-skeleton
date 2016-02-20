@@ -3,7 +3,7 @@ using Xunit;
 
 namespace Web.Unit
 {
-    public class HelloWorldControllerShould
+    public class GreetingEndpointShould
     {
         [Fact]
         public async void ReturnHelloWorld()
@@ -11,12 +11,13 @@ namespace Web.Unit
             var server = new TestServer(TestServer.CreateBuilder().UseStartup<Mvc.Startup>());
             var client = server.CreateClient();
             
-            var response = await client.GetAsync("/");
+            var response = await client.GetAsync("/greeting");
             response.EnsureSuccessStatusCode();
 
             var responseString = await response.Content.ReadAsStringAsync();
             
-            Assert.Equal("Hello, world from MVC!", responseString);
+            Assert.Equal("Hello, world!", responseString);
         }
+        
     }
 }
