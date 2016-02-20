@@ -1,7 +1,7 @@
 using System.IO;
 using Microsoft.AspNet.Builder;
 
-namespace HelloWeb
+namespace Web
 {
     public class Startup
     {
