@@ -7,7 +7,8 @@ namespace Controllers
         public object Get() 
         {
             return new {
-                greeting = "/greeting"   
+                greeting = "/greeting",
+                people = "/person"
             };
         }
     }    
