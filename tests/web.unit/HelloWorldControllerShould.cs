@@ -1,4 +1,4 @@
-using Controllers;
+using Microsoft.AspNet.TestHost;
 using Xunit;
 
 namespace Web.Unit
@@ -6,11 +6,17 @@ namespace Web.Unit
     public class HelloWorldControllerShould
     {
         [Fact]
-        public void Test()
+        public async void ReturnHelloWorld()
         {
-            var response = new HelloWorldController().Get();
+            var server = new TestServer(TestServer.CreateBuilder().UseStartup<Mvc.Startup>());
+            var client = server.CreateClient();
             
-            Assert.Equal("Hello, world from MVC!", response);
+            var response = await client.GetAsync("/");
+            response.EnsureSuccessStatusCode();
+
+            var responseString = await response.Content.ReadAsStringAsync();
+            
+            Assert.Equal("Hello, world from MVC!", responseString);
         }
     }
 }
