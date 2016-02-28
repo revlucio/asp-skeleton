@@ -7,7 +7,7 @@ namespace Controllers
     {
         private static List<string> people = new List<string> { "Han", "Leia", "Luke" }; 
         
-        public object Get() 
+        public object List() 
         {
             return people;
         }

@@ -7,8 +7,8 @@ namespace Controllers
         public object Get() 
         {
             return new {
-                greeting = "/greeting",
-                people = "/person"
+                greeting = this.Url.Action<GreetingController>(c => c.Get()),
+                people = this.Url.Action<PersonController>(c => c.List())
             };
         }
     }    

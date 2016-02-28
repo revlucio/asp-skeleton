@@ -1,3 +1,4 @@
+using System;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Builder;
 using Microsoft.AspNet.Http;
@@ -16,6 +17,7 @@ namespace Middleware
         public async Task Invoke(HttpContext context)
         {
             var path = context.Request.Path.ToString().TrimEnd('/');
+            Console.WriteLine($"AddMethodToRequestPathMiddleware: {path}");
             var method = context.Request.Method;
             
             context.Request.Path = PathString.FromUriComponent($"{path}/{method}");
